@@ -6,3 +6,5 @@ pip install tqdm
 pip install pick
 pip install beautifulsoup4
 pip install colorama
+echo Done!
+pause
