@@ -1,6 +1,7 @@
 ::v1.01
 chcp 65001
 @echo off
+if not exist "%cd%\.setting\qobuz-dl\" mkdir "%cd%\.setting\qobuz-dl\"
 cls
 :menu
 echo.
