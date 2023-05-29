@@ -1,5 +1,6 @@
 australia      2023-08-18
 austria        2023-08-01
+belgium        2023-08-20
 canada         2023-08-04
 chile          2023-05-23
 denmark        2023-08-04       
