@@ -32,6 +32,15 @@ move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
 if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
 qbzremake.py dl %input%
 
+::belgium
+if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
+if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
+xcopy "%cd%\.setting\belgium.ini" "C:\ProgramData\TEMP\qobuz-dl" /y
+rename "C:\ProgramData\TEMP\qobuz-dl\belgium.ini" config.ini
+move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
+if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
+qbzremake.py dl %input%
+
 ::canada
 if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
 if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
@@ -212,6 +221,15 @@ if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\co
 if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
 xcopy "%cd%\.setting\austria.ini" "C:\ProgramData\TEMP\qobuz-dl" /y
 rename "C:\ProgramData\TEMP\qobuz-dl\austria.ini" config.ini
+move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
+if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
+qbzremake.py dl url.txt
+
+::belgium
+if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
+if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
+xcopy "%cd%\.setting\belgium.ini" "C:\ProgramData\TEMP\qobuz-dl" /y
+rename "C:\ProgramData\TEMP\qobuz-dl\belgium.ini" config.ini
 move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
 if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
 qbzremake.py dl url.txt
