@@ -1,8 +1,17 @@
-::v1.01
 chcp 65001
 @echo off
 if not exist "%cd%\.setting\qobuz-dl\" mkdir "%cd%\.setting\qobuz-dl\"
+if exist "%tmp%\q_version.txt" del /f "%tmp%\q_version.txt"
+set version=1.00
+curl "https://raw.githubusercontent.com/linyv4ik/update/main/q_version.txt" --output "%tmp%\q_version.txt"
 cls
+set /p file_version=<"%tmp%\q_version.txt"
+if %version% lss %file_version% (
+    echo Поточна версія %version% вийшло оновлення %file_version%
+	goto choice
+) else (
+    goto menu
+)
 :menu
 echo.
 echo Введіть посилання на альбом Qobuz або виберіть бажану опцію з меню
@@ -456,3 +465,22 @@ goto menu
 if exist "%cd%\.setting\qobuz-dl\qobuz_dl.db" del /f/q "%cd%\.setting\qobuz-dl\qobuz_dl.db"
 echo qobuz_dl.db видалено!
 goto menu
+
+:choice
+set /p update="Оновити скрипт до останньої версії? (1 так / 0 ні): "
+cls
+if %update% == 0 (goto menu)
+if %update% == 1 (goto upd)
+goto choice
+:upd
+if exist "%tmp%\qbz-xxx" @rd /s /q "%tmp%\qbz-xxx"
+if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip"
+if not exist "%tmp%\qbz-xxx" mkdir "%tmp%\qbz-xxx"
+curl "https://codeload.github.com/linyv4ik/qbz-xxx/zip/refs/heads/main" --output "%tmp%\qbz-xxx.zip"
+powershell Expand-Archive "%tmp%\qbz-xxx.zip" -DestinationPath "%tmp%\qbz-xxx"
+xcopy "%tmp%\qbz-xxx\qbz-xxx-main\*" "%cd%" /E /I /Y
+if exist "%tmp%\qbz-xxx" @rd /s /q "%tmp%\qbz-xxx"
+if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip"
+timeout /t 2
+start cmd /c "qbz-xxx.bat"
+exit
