@@ -3,7 +3,7 @@ chcp 65001
 if not exist "%cd%\.setting\qobuz-dl\" mkdir "%cd%\.setting\qobuz-dl\"
 if exist "%tmp%\q_version.txt" del /f "%tmp%\q_version.txt"
 set version=1.1
-curl "https://raw.githubusercontent.com/linyv4ik/update/main/q_version.txt" --output "%tmp%\q_version.txt"
+curl -s "https://raw.githubusercontent.com/linyv4ik/update/main/q_version.txt" --output "%tmp%\q_version.txt"
 cls
 set /p file_version=<"%tmp%\q_version.txt"
 if %version% lss %file_version% (
@@ -476,7 +476,7 @@ goto choice
 if exist "%tmp%\qbz-xxx" @rd /s /q "%tmp%\qbz-xxx"
 if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip"
 if not exist "%tmp%\qbz-xxx" mkdir "%tmp%\qbz-xxx"
-curl "https://codeload.github.com/linyv4ik/qbz-xxx/zip/refs/heads/main" --output "%tmp%\qbz-xxx.zip"
+curl -s "https://codeload.github.com/linyv4ik/qbz-xxx/zip/refs/heads/main" --output "%tmp%\qbz-xxx.zip"
 powershell Expand-Archive "%tmp%\qbz-xxx.zip" -DestinationPath "%tmp%\qbz-xxx"
 xcopy "%tmp%\qbz-xxx\qbz-xxx-main\*" "%cd%" /E /I /Y
 if exist "%tmp%\qbz-xxx" @rd /s /q "%tmp%\qbz-xxx"
