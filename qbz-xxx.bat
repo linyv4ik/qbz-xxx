@@ -490,6 +490,7 @@ cls
 if %update% == 0 (goto menu)
 if %update% == 1 (goto upd)
 goto choice
+
 :upd
 if exist "%tmp%\qbz-xxx" @rd /s /q "%tmp%\qbz-xxx"
 if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip"
