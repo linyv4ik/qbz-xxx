@@ -378,7 +378,7 @@ echo powershell Expand-Archive "%tmp%\qbz-xxx.zip" -DestinationPath "%tmp%\qbz-x
 echo xcopy "%tmp%\qbz-xxx\qbz-xxx-main\*" "%cd%" /E /I /Y>>"%tmp%\update.bat"
 echo if exist "%tmp%\qbz-xxx" rmdir /s /q "%tmp%\qbz-xxx">>"%tmp%\update.bat"
 echo if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip">>"%tmp%\update.bat"
-timeout /t 1 >>"%tmp%\update.bat"
+echo timeout /t 1 >>"%tmp%\update.bat"
 echo start cmd /c "qbz-xxx.bat">>"%tmp%\update.bat"
 timeout /t 1
 start cmd /c "update.bat"
