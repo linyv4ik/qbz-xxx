@@ -380,5 +380,5 @@ echo if exist "%tmp%\qbz-xxx" rmdir /s /q "%tmp%\qbz-xxx">>"%tmp%\update.bat"
 echo if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip">>"%tmp%\update.bat"
 echo timeout /t 1 >>"%tmp%\update.bat"
 echo start cmd /c "qbz-xxx.bat">>"%tmp%\update.bat"
-start cmd /c "update.bat"
+start cmd /c "%tmp%\update.bat"
 exit
