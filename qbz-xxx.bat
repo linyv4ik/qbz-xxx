@@ -9,7 +9,7 @@ if not exist "qbzremake.py" goto upd
 if not exist "%cd%\.setting\qobuz-dl\" mkdir "%cd%\.setting\qobuz-dl\"
 ::update checker
 if exist "%tmp%\q_version.txt" del /f "%tmp%\q_version.txt"
-set version=1.4
+set version=1.5
 curl -s "https://raw.githubusercontent.com/linyv4ik/update/main/q_version.txt" --output "%tmp%\q_version.txt"
 cls
 set /p file_version=<"%tmp%\q_version.txt"
