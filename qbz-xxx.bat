@@ -369,7 +369,8 @@ if %update% == 1 (goto upd)
 goto choice
 
 :upd
-echo timeout /t 2 >>"%tmp%\update.bat"
+echo @echo off >>"%tmp%\update.bat"
+echo timeout /t 1 >>"%tmp%\update.bat"
 echo if exist "%tmp%\qbz-xxx" rmdir /s /q "%tmp%\qbz-xxx">>"%tmp%\update.bat"
 echo if exist "%tmp%\qbz-xxx.zip" del /f "%tmp%\qbz-xxx.zip">>"%tmp%\update.bat"
 echo if not exist "%tmp%\qbz-xxx" mkdir "%tmp%\qbz-xxx">>"%tmp%\update.bat"
