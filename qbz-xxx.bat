@@ -1,5 +1,6 @@
 @echo off
 chcp 65001
+title qbz-xxx
 ::restore health
 if exist "%tmp%\update.bat" del /f "%tmp%\update.bat"
 if not exist "%cd%\.setting" goto upd
