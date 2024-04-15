@@ -9,7 +9,7 @@ if not exist "qbzremake.py" goto upd
 if not exist "%cd%\.setting\qobuz-dl\" mkdir "%cd%\.setting\qobuz-dl\"
 ::update checker
 if exist "%tmp%\q_version.txt" del /f "%tmp%\q_version.txt"
-set version=2.003
+set version=2.004
 curl -s "https://raw.githubusercontent.com/linyv4ik/update/main/q_version.txt" --output "%tmp%\q_version.txt"
 cls
 set /p file_version=<"%tmp%\q_version.txt"
@@ -31,17 +31,17 @@ echo.
 if %input% == 2 (goto qobuz_db)
 
 ::argentina
-::if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
-::if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
-::xcopy "%cd%\.setting\argentina.ini" "C:\ProgramData\TEMP\qobuz-dl" /y
-::rename "C:\ProgramData\TEMP\qobuz-dl\argentina.ini" config.ini
-::move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
-::if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
-::if %input% == 1 (
-::	qbzremake.py dl url.txt
-::) else (
-::    qbzremake.py dl %input%
-::)
+if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
+if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
+xcopy "%cd%\.setting\argentina.ini" "C:\ProgramData\TEMP\qobuz-dl" /y
+rename "C:\ProgramData\TEMP\qobuz-dl\argentina.ini" config.ini
+move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
+if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
+if %input% == 1 (
+	qbzremake.py dl url.txt
+) else (
+    qbzremake.py dl %input%
+)
 
 ::australia
 if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
