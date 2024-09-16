@@ -34,7 +34,7 @@ set dl_unitedkingdom=1
 set dl_unitedstates=1
 
 ::далі не чіпати нічого
-for %%C in (australia austria belgium bolivia brasil bulgaria canada colombia costarica croatia denmark ecuador france germany guatemala honduras indonesia italy mauritius mexico netherlands newzealand northmacedonia paraguay peru poland salvador serbia slovenia southafrica spain switzerland turkey ukraine unitedkingdom unitedstates) do (
+for %%C in (argentina australia austria belgium brasil canada chile colombia denmark finland france germany ireland italy luxembourg mexico netherlands newzealand norway portugal spain sweden switzerland unitedkingdom unitedstates) do (
     if !dl_%%C! equ 1 set /a available_countries+=1
 )
 ::restore health
