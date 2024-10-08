@@ -1,5 +1,5 @@
 @echo off
-chcp 65001
+chcp 65001 > nul
 setlocal enabledelayedexpansion
 title qbz-xxx
 set /a available_countries=0
@@ -219,8 +219,9 @@ set dl=1
 goto menu
 
 :qobuz_db
+echo.
 if exist "%cd%\.setting\qobuz-dl\qobuz_dl.db" del /f/q "%cd%\.setting\qobuz-dl\qobuz_dl.db"
-echo qobuz_dl.db видалено!
+echo Історію завантаження видалено!
 goto menu
 
 :choice
@@ -249,12 +250,13 @@ exit
 :downloads
 echo.
 title qbz-xxx %country%
+echo %cd%\.setting\%country%.ini
 if not exist "%cd%\.setting\%country%.ini" goto country_skip
 if exist "%cd%\.setting\qobuz-dl\config.ini" del /f/q "%cd%\.setting\qobuz-dl\config.ini"
 if not exist "C:\ProgramData\TEMP\qobuz-dl" mkdir "C:\ProgramData\TEMP\qobuz-dl"
-xcopy "%cd%\.setting\%country%.ini" "C:\ProgramData\TEMP\qobuz-dl" /y
+xcopy "%cd%\.setting\%country%.ini" "C:\ProgramData\TEMP\qobuz-dl" /y > nul
 rename "C:\ProgramData\TEMP\qobuz-dl\%country%.ini" config.ini
-move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl"
+move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl" > nul
 if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
 echo.
 if %input% == 1 (
