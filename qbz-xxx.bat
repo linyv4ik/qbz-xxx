@@ -3,7 +3,7 @@ chcp 65001 > nul
 setlocal enabledelayedexpansion
 title qbz-xxx
 set /a available_countries=0
-set version=2.008
+set version=2.009
 
 ::Settings
 ::активація країни: 0=вимкнена 1=активна
@@ -37,11 +37,16 @@ set dl_unitedstates=1
 for %%C in (argentina australia austria belgium brasil canada chile colombia denmark finland france germany ireland italy luxembourg mexico netherlands newzealand norway portugal spain sweden switzerland unitedkingdom unitedstates) do (
     if !dl_%%C! equ 1 set /a available_countries+=1
 )
+::так як qbzremake.py переміщено в папку \.setting а qbzhash.py взагалі було видалено
+::то тепер треба видалити не потрібні файли у користувачів
+::цей код буде видалено в версії 2.012
+if exist "qbzhash.py" del /f "qbzhash.py"
+if exist "qbzremake.py" del /f "qbzremake.py"
+::кінець коду
 ::restore health
 if exist "%tmp%\update.bat" del /f "%tmp%\update.bat"
 if not exist "%cd%\.setting" goto upd
-if not exist "qbzhash.py" goto upd
-if not exist "qbzremake.py" goto upd
+if not exist "%cd%\.setting\qbzremake.py" goto upd
 if not exist "%cd%\.setting\qobuz-dl\" mkdir "%cd%\.setting\qobuz-dl\"
 ::update checker
 if exist "%tmp%\q_version.txt" del /f "%tmp%\q_version.txt"
@@ -260,9 +265,9 @@ move "C:\ProgramData\TEMP\qobuz-dl\config.ini" "%cd%\.setting\qobuz-dl" > nul
 if exist "C:\ProgramData\TEMP\qobuz-dl" rmdir /S /Q "C:\ProgramData\TEMP\qobuz-dl"
 echo.
 if %input% == 1 (
-	qbzremake.py dl url.txt
+	"%cd%\.setting\qbzremake.py" dl url.txt
 ) else (
-    qbzremake.py dl %input%
+    "%cd%\.setting\qbzremake.py" dl %input%
 )
 
 :country_skip
