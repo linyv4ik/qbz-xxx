@@ -3,7 +3,7 @@ chcp 65001 > nul
 setlocal enabledelayedexpansion
 title qbz-xxx
 set /a available_countries=0
-set version=2.009
+set version=2.010
 
 ::Settings
 ::активація країни: 0=вимкнена 1=активна
@@ -12,7 +12,7 @@ set dl_australia=0
 set dl_austria=0
 set dl_belgium=0
 set dl_brasil=0
-set dl_canada=1
+set dl_canada=0
 set dl_chile=0
 set dl_colombia=0
 set dl_denmark=0
