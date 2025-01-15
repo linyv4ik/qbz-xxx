@@ -3,7 +3,7 @@ chcp 65001 > nul
 setlocal enabledelayedexpansion
 title qbz-xxx
 set /a available_countries=0
-set version=2.010
+set version=2.011
 
 ::Settings
 ::активація країни: 0=вимкнена 1=активна
@@ -17,7 +17,7 @@ set dl_chile=0
 set dl_colombia=0
 set dl_denmark=0
 set dl_finland=0
-set dl_france=1
+set dl_france=0
 set dl_germany=0
 set dl_ireland=0
 set dl_italy=0
@@ -30,8 +30,8 @@ set dl_portugal=0
 set dl_spain=0
 set dl_sweden=0
 set dl_switzerland=0
-set dl_unitedkingdom=1
-set dl_unitedstates=1
+set dl_unitedkingdom=0
+set dl_unitedstates=0
 
 ::далі не чіпати нічого
 for %%C in (argentina australia austria belgium brasil canada chile colombia denmark finland france germany ireland italy luxembourg mexico netherlands newzealand norway portugal spain sweden switzerland unitedkingdom unitedstates) do (
@@ -62,6 +62,9 @@ goto menu
 
 :menu
 title qbz-xxx v %version%   Країн доступно на момент оновлення: %available_countries%/25
+echo.
+echo Увага... З 2024.01.15 скрипт більше не буде оновлюватися бо Qobuz змінив метод авторизації і на данний момент жоден завантажувач командного рядка не може працювати з Qobuz. Як тільки знайдеться інший робочий спосіб завантаження з qobuz.com то скрипт буде оновлено до актуального стану, а поки що раджу використовувати сервіс онлайн завантаження
+echo https://lucida.to/ або https://doubledouble.top/
 echo.
 echo Введіть посилання на альбом Qobuz або виберіть бажану опцію з меню
 echo.
